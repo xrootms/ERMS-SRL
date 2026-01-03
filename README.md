@@ -3,7 +3,7 @@ Employee record management system (ERMS) built with Python-Flask and MySQL is a 
 
 
 1. ### Setup db:
-
+```bash
 #!/bin/bash
 
 sudo apt update
@@ -26,9 +26,11 @@ CREATE TABLE IF NOT EXISTS employeetb (
     location VARCHAR(20)
 );
 EOF
+```
 
 2. ### Setup App:
-
+3. 
+```bash
 #!/bin/bash
 set -e
 
@@ -36,21 +38,22 @@ cd /home/ubuntu
 
 sudo apt-get update -y
 sudo apt-get install -y \
- mysql-client \
-  python3 \
-  python3-pip \
-  python3-flask \
-  python3-pymysql \
-  python3-boto3 \
-  git
+Â mysql-client \
+Â  python3 \
+Â  python3-pip \
+Â  python3-flask \
+Â  python3-pymysql \
+Â  python3-boto3 \
+Â  git
 
 if [ -d "ERMS-SRL" ]; then cd ERMS-SRL
-  git pull
+Â  git pull
 else
-  git clone https://github.com/xrootms/ERMS-SRL.git
-  cd ERMS-SRL
+Â  git clone https://github.com/xrootms/ERMS-SRL.git
+Â  cd ERMS-SRL
 fi
 
 #edit port 5000, 
 #edit config.py (add s3 and rds url)
 sudo python3 Empapp.py
+```
