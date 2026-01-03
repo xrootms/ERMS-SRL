@@ -28,17 +28,20 @@ CREATE TABLE IF NOT EXISTS employeetb (
 EOF
 ```
 ### Varify
+
+```bash
 sudo mysql -u root
 show databases;
 use employee;
 show tables;
 DESCRIBE employeetb;
 SELECT * FROM employeetb LIMIT 10;
-
+```
 ---
 
 2. ## Setup App:
 ### option: a
+
 ```bash
 #!/bin/bash
 set -e
