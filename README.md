@@ -131,6 +131,9 @@ sudo grep "500" /var/log/empapp.log
 ```bash
 sudo systemctl stop empapp
 sudo systemctl disable empapp
+
+sudo rm /etc/systemd/system/empapp.service
+sudo systemctl daemon-reload
 ```
 
 
