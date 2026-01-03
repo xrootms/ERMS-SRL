@@ -2,7 +2,7 @@
 Employee record management system (ERMS) built with Python-Flask and MySQL is a web-based application designed to efficiently manage and track employee data within an organization.
 
 
-1. ## Setup db:
+## 1. Setup db:
 ```bash
 #!/bin/bash
 
@@ -39,7 +39,7 @@ SELECT * FROM employeetb LIMIT 10;
 ```
 ---
 
-2. ## Setup App:
+## 2. Setup App:
 ### option: a
 
 ```bash
@@ -67,12 +67,16 @@ fi
 
 #edit port 5000, 
 #edit config.py (add s3 and rds url)
+```
+
+### Option:a (testing)
+
+```bash
+cd /home/ubuntu/ERMS-SRL
 sudo python3 EmpApp.py
 ```
 
----
-
-### option:b
+### Option:b (with logs)
 
 ```bash
 #!/bin/bash
