@@ -1,6 +1,6 @@
-# ERMS-SRL
-Employee record management system (ERMS) built with Python-Flask and MySQL is a web-based application designed to efficiently manage and track employee data within an organization.
+<img width="1140" height="30" alt="image" src="https://github.com/user-attachments/assets/23535deb-c6b0-4afe-924d-0c24a67613e9" />Employee record management system (ERMS) built with Python-Flask and MySQL is a web-based application designed to efficiently manage and track employee data within an organization.
 ---
+
 ## Task 1. Database Setup :
 $ nano setup_db.sh
 
@@ -61,7 +61,7 @@ cryptograph
 ```
 Dockerfile explanation.
 
-cat Dockerfile
+**cat Dockerfile**
 
 | Commands                 | Details                  |
 | ---------------------------- | ------------------------ |
@@ -93,10 +93,12 @@ docker run -d -p 5000:5000  -- name <container-name>  <image-name> .
 ```
 Now, check your application on the browser using <ip:5000>
 
+<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
+
 ---
 ## Optimizing Docker Images
 Optimizing Docker images is very important. We can use **SlimToolkit** to reduce the size of your  Docker image.
-  *Install SlimToolkit :*
+**Install SlimToolkit :**
   
 ```bash
   curl -sL https://raw.githubusercontent.com/slimtoolkit/slim/master/scripts/install-slim.sh | sudo bash
@@ -133,9 +135,121 @@ This command will slim the Docker images without affecting the file or file path
 
 **Now if you you check the docker image size, it will be considerably reduced as shown below.**
 
-image
+image<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
 
 You can see the size of the Docker image has been reduced from 106MB to 19.8MB and it works properly without any issue.
+
+---
+ ## Docker Log Management
+
+ **What is the CloudWatch Agent?**
+The CloudWatch Agent is an official AWS service/daemon that runs on your server and can:
+
+•	collect log files.
+•	collect system metrics (CPU, RAM, disk, network).
+•	send them securely to CloudWatch.
+
+In Docker environments, it is often used to:
+•	Read container log files from: /var/lib/docker/containers/*/*-json.log
+•	 Forward them to CloudWatch Logs
+
+### Step 1: Create IAM role
+Attach this policy to EC2: 
+
+**CloudWatchAgentServerPolicy**                          (EC2 role with CloudWatch permissions)
+
+## Step 2: Install CloudWatch Agent on host
+On Ubuntu:
+
+```bash
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+
+sudo dpkg -i amazon-cloudwatch-agent.deb
+```
+
+## Step 3: Create agent configuration
+Run the wizard (easy way):
+
+```bash
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+```
+
+When asked:
+•	OS :> linux
+•	user :> root
+•	Logs :> yes
+•	Log file path :> /var/lib/docker/containers/*/*-json.log
+•	Log group :> docker-container-flask-logs
+•	Log stream :> {instance_id}
+•	Metrics :> yes (recommended)
+
+This creates a config file like:
+•	/opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+### Step 4: Start the agent
+
+```bash
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config \
+  -m ec2 \
+  -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
+  -s
+```
+
+**Check status:**
+
+```bash
+sudo systemctl status amazon-cloudwatch-agent
+```
+
+### Step 5: Verify
+1.	Go to AWS Console :> CloudWatch → Logs
+2.	We will see log group:   (docker-container-flask-logs)
+3.	Logs update LIVE
+Container logs are now centralized.
+
+image<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
+
+
+**Result**
+Now automatically:
+all Docker container logs appear in CloudWatch Logs
+Log group: emp-srl-app
+Log streams: EC2 instance IDs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 ## 2.2. Without Docker App Setup:
