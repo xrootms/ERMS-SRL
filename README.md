@@ -100,7 +100,7 @@ Now, check your application on the browser using <ip:5000>
 ---
 # Optimizing Docker Images
 Optimizing Docker images is very important. We can use **SlimToolkit** to reduce the size of your  Docker image.
-**Install SlimToolkit :**
+- **Install SlimToolkit :**
   
 ```bash
   curl -sL https://raw.githubusercontent.com/slimtoolkit/slim/master/scripts/install-slim.sh | sudo bash
