@@ -1,7 +1,7 @@
 # ERMS-SRL
 Employee record management system (ERMS) built with Python-Flask and MySQL is a web-based application designed to efficiently manage and track employee data within an organization.
 ---
-## 1. Database Setup :
+## Task 1. Database Setup :
 $ nano setup_db.sh
 
 ```bash
@@ -60,23 +60,26 @@ gunicorn
 cryptograph
 ```
 Dockerfile explanation.
+
 cat Dockerfile
 
-1.	Python Slim                                                        # Its base image. Which is a minimal image.
-2.	ENV PYTHONDONTWRITEBYTECODE=1                                      # Smaller container size and Cleaner fs
-3.	ENV PYTHONUNBUFFERED=1                                             # Forces stdout/stderr streams to be unbuffered, Real- time logs
-4.	/app                                                               # Set the /app directory as the working directory.
-5.	&&                                                                 # Combining RUNs commands (which means smaller image.)
-6.	--no-install-recommends                                            # keeps the image smaller by avoiding extra suggested packages
-7.	rm -rf /var/lib/apt/lists/*                                        # To keep image size small: clean the apt cache in the same layer
-8.	python -m pip                                                      # use the correct pip for this Python (avoid mismatch)
-9.	--no-cache-dir                                                     # Pip will NOT save downloaded files in the cache, images smaller 
-10.	-r                                                                 # Tells pip to install dependencies from a file
-11.	CMD                                                                # Default command that runs when the container starts.
-12.	"--access-logfile", "-"                                            # Send access logs to stdout
-13.	"--error-logfile", "-"                                             # Send error logs to stderr
-14.	"EmpApp:app"                                                       # Import app object from EmpApp.py
-15.	 USER appuser                                                      # Run application as a non-root user called appuser.”
+| Commands                 | Details                  |
+| ---------------------------- | ------------------------ |
+|1.	Python Slim                                  | # Its base image. Which is a minimal image.
+|2.	ENV PYTHONDONTWRITEBYTECODE=1                | # Smaller container size and Cleaner fs
+|3.	ENV PYTHONUNBUFFERED=1                       | # Forces stdout/stderr streams to be unbuffered, Real- time logs
+|4.	/app                                         | # Set the /app directory as the working directory.
+|5.	&&                                           | # Combining RUNs commands (which means smaller image.)
+|6.	--no-install-recommends                      | # keeps the image smaller by avoiding extra suggested packages
+|7.	rm -rf /var/lib/apt/lists/*                  | # To keep image size small: clean the apt cache in the same layer
+|8.	python -m pip                                | # use the correct pip for this Python (avoid mismatch)
+|9.	--no-cache-dir                               | # Pip will NOT save downloaded files in the cache, images smaller 
+|10.	-r                                       | # Tells pip to install dependencies from a file
+|11.	CMD                                      | # Default command that runs when the container starts.
+|12.	"--access-logfile", "-"                  | # Send access logs to stdout
+|13.	"--error-logfile", "-"                   | # Send error logs to stderr
+|14.	"EmpApp:app"                             | # Import app object from EmpApp.py
+|15.	 USER appuser                            | # Run application as a non-root user called appuser.”
 
 
 **Build Docker Image**
