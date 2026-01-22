@@ -95,7 +95,9 @@ docker run -d -p 5000:5000  -- name <container-name>  <image-name> .
 ```
 Now, check your application on the browser using <ip:5000>
 
-<img src="./doc/image/brows.png" width="200" align="right" />
+<p align="center">
+  <img src="./doc/image/brows.png" alt="LEMP Diagram" width="1000">
+</
 
 ---
 # Optimizing Docker Images
@@ -137,7 +139,9 @@ This command will slim the Docker images without affecting the file or file path
 
 **Now if you you check the docker image size, it will be considerably reduced as shown below.**
 
-image<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
+<p align="center">
+  <img src="./doc/image/size-img.png" alt="LEMP Diagram" width="1000">
+</
 
 You can see the size of the Docker image has been reduced from 106MB to 19.8MB and it works properly without any issue.
 
@@ -211,7 +215,9 @@ sudo systemctl status amazon-cloudwatch-agent
 3.	Logs update LIVE
 Container logs are now centralized.
 
-image<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
+<p align="center">
+  <img src="./doc/image/log-grop.png" alt="LEMP Diagram" width="1000">
+</
 
 
 **Result**
