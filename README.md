@@ -50,7 +50,8 @@ cat EmpApp.py
 ```
 
 ### Step 2: Create a requirements.txt file in the project directory.
-    nano requirements.txt
+
+nano requirements.txt
 
 ```bash
 flask
